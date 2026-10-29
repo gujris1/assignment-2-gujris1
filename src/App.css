@@ -1,1 +1,282 @@
 /* Paste your Assignment 1 styles.css here. Keep the icons in src/assets/ so url(assets/...) paths keep working. */
+/* Overall page styling */
+/*body {
+    color: black;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}*/
+body {
+    color: black;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    min-height: 100vh;
+}
+
+/* ========== HEADER STYLES ========== */
+/* Header Styling */
+.site-header {
+    background-color: #dc4c3e;
+    color: #ffffff;
+    display: flex;
+    padding: 16px 32px;
+    gap: 12px;
+    flex-basis: 100%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+/* This is for the menu icon */
+.site-header img {
+    width: 28px;
+    height: 24px;
+}
+
+/* "form" contains the input box for quick find */
+.search-form {
+    flex: 0 1 230px;
+    min-width: 0;
+}
+
+/* this styles the input box with the search icon */
+.search-form input {
+    border: 0;
+    box-sizing: border-box;
+    padding: 8px 8px 8px 36px;
+    background: rgba(255, 255, 255, 0.2) url('assets/search_icon.png') no-repeat 4px;
+    color: #ffffff;
+    width: 100%;
+    border-radius: 4px;
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+
+.search-form input::placeholder {
+  color: #ffffff;
+}
+
+/* Style for the counter text and icon on the right side of the header */
+.counter {
+    margin: 0 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.counter img {
+    width: 24px;
+    height: 24px;
+}
+
+/* ========== NAVIGATION STYLES ========== */
+/* Left Navigation / Sidebar Menu Styling */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    padding: 24px 16px;
+    background: #fefbf2;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for each item in the list (icon, label, and count) */
+.sidebar-list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+}
+
+.sidebar-list-item img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.sidebar-list-count {
+    color: #7e7d79;
+    font-size: 12px;
+    padding-top: 2px;
+}
+
+/* now also add hover for sidebar list items */
+.sidebar-list-item:hover {
+    background: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* ========== MAIN CONTENT STYLES ========== */
+/* Main content section styling */
+.main-content {
+    min-width: 0; /* new testing issue when make screen smaller and main goes below sidebar*/
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 32px 48px;
+    flex: 1;
+}
+
+.main-content h1 {
+    font-size: 20px;
+    margin: 0 0 16px;
+}
+
+.filter-separator {
+    color: #9b9a9a;
+    margin: 0 8px;
+}
+
+.task-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.task {
+    display: flex;
+    padding: 12px 0;
+    gap: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* Style checkbox to be circle */
+.task input {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    appearance: none;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* testing if checked works */
+.task input:checked {
+    background-color: #dc4c3e;/*#000;*/
+    /* completed task do gray strikethrough */
+    border-color: #dc4c3e;
+}
+
+.task.completed {
+    /*text-decoration: line-through;*/
+    color: #000;
+}
+
+.task label {
+    /* style the delete 'x' button */
+    flex: 1;
+    cursor: pointer;
+}
+
+.task.completed label{
+    text-decoration: line-through;
+    color: #000;
+}
+
+/* Add style for task form (input to add task) */
+.task-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.task-form input {
+    min-width: 0; /* new testing issue when make screen smaller and main goes below sidebar*/
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font: inherit;
+    border: 1px solid #000;
+}
+
+.task-form button {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 4px;
+    background: #dc4c3e; /* color matches header! */
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Add style for delete button */
+.delete-button {
+    /*border: 0;
+    background: none;
+    color: #9a9a9a;
+    font-size: 20px;
+    padding: 0 4px;
+    cursor: pointer;*/
+    border: 0;
+    background: none;
+    color: #999999;
+    font-size: 24px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: #dc4c3e;
+    background: #f4b9b4;
+}
+
+/* Styles for filters */
+/* the filter row with all | active | completed */
+.filter-list {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.filter-button {
+    border: 0;
+    background: none;
+    padding: 4px;
+    font: inherit;
+    color: #7e7d79;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    color: #202020;
+}
+
+.filter-button.active {
+    color: #dc4c3e;
+    font-weight: 600;
+    /* adding underline too */
+
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+/* Responsive behavior: Left navigation / sidebar disappears on viewports 480px or less */
+@media (max-width: 480px) {
+    .sidebar {
+        display: none;
+    }
+}
