@@ -15,7 +15,6 @@ function TaskForm({ onAddTask }) {
     setText(''); // Clear on success
   }
 
-  /*<form onSubmit={handleSubmit}> -- going to try adding class here */
   return (
   <form  className="task-form" onSubmit={handleSubmit}>
       <input

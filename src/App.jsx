@@ -11,16 +11,8 @@ import upcomingIcon from './assets/upcoming_icon.png'
 
 
 // Assignment 2: build the Task Manager here.
-// Step 1 (after the Oct 12 class): hard-coded tasks, the five components, props.
-// Step 2 (after the Oct 19 class): useState, the controlled form, toggle, delete, filtering.
-/*const currentTasks = [
-  { id: 1, text: 'Call Mom', completed: false },
-  { id: 2, text: 'Buy the new issue of Scientific American', completed: false },
-  { id: 3, text: 'Buy the new album by Rake', completed: false },
-  { id: 4, text: 'Buy a giftcard for Dad', completed: false },
-];*/
-const currentTasks = [];
-// Now adding filters:
+const currentTasks = []; // initial state is no tasks
+// Add 3 filters:
 const FILTERS = [
   { value: 'all', label: 'All' },
   { value: 'active', label: 'Active' },
@@ -28,13 +20,14 @@ const FILTERS = [
 ];
 
 function App() {
-  const [tasks, setTasks] = useState(currentTasks);//useState([])
+  const [tasks, setTasks] = useState(currentTasks);
+  const [filter, setFilter] = useState('all'); // default filter is All
+
   const taskCount = tasks.length;
-  const completedTasks = tasks.filter(task => task.completed).length;
+  const completedTasksCount = tasks.filter(task => task.completed).length;
 
   function addTask(text) {
     const newTask = { id: Date.now(), text, completed: false };
-    //setTasks([...tasks, newTask]);
     setTasks(oldTasks => [...oldTasks, newTask]);
   }
 
@@ -52,7 +45,6 @@ function App() {
   }
 
   // Now adding filtering:
-  const [filter, setFilter] = useState('all');
   const visibleTasks = tasks.filter(task => {
     if (filter === 'active') {
       return !task.completed;
@@ -65,7 +57,7 @@ function App() {
   });
 
   // Add active task count for Inbox count in sidebar
-  const activeCount = taskCount - completedTasks;
+  const activeCount = taskCount - completedTasksCount;
 
   return (
     <>
@@ -74,11 +66,11 @@ function App() {
         {/* Menu icon on left side */}
         <img src={menuIcon} alt="Menu"/>
         {/* Quick Find Box */}
-        <form className="search-form">
+        <form className="search-form" onSubmit={e => e.preventDefault()}>
           <input type="search" id="search" name="search" placeholder="Quick Find"/>
         </form>
         {/*counter text on right side with check icon */}
-        <TaskCounter tasks={tasks}/>
+        <TaskCounter totalTasks={taskCount} completedTasks={completedTasksCount}/>
       </header>
 
       {/* Left Navigation Section */}
@@ -89,18 +81,18 @@ function App() {
             <a className="sidebar-list-item">
               <img src={inboxIcon} alt="Inbox"/>
               Inbox
-              <span className="sidebar-list-count">{activeCount}</span> {/*TODO: update 5 to actual count?!! */}
+              <span className="sidebar-list-count">{activeCount}</span>
               </a>
               </li>
               <li>
                 <a className="sidebar-list-item">
                   <img src={calendarIcon} alt="Calendar"/>
                   Today
-                  <span className="sidebar-list-count">5</span> {/*TODO: update 5 to actual count?!! */}
+                  <span className="sidebar-list-count">5</span>
                 </a>
               </li>
               <li>
-                {/*Upcoming list item doesn't have a count */}
+                {/* Upcoming list item doesn't have a count */}
                 <a className="sidebar-list-item">
                   <img src={upcomingIcon} alt="Upcoming"/>
                   Upcoming
@@ -112,7 +104,7 @@ function App() {
       {/* Main Content Section */}
       <main className="main-content">
         <h1> Inbox </h1>
-        {/* new adding the 3 filters under Inbox header!! */}
+        {/* Add the 3 filters under the Inbox header, each filter separated by | */}
         <ul className="filter-list">
           {FILTERS.map((option, index) => (
             <li key={option.value}>
@@ -126,14 +118,8 @@ function App() {
 
 
         <TaskForm onAddTask={addTask} />
-        <TaskList tasks={visibleTasks} onToggleTask={toggleTask} onDeleteTask={deleteTask} /> {/* doing visibleTasks for filtering! */}
+        <TaskList tasks={visibleTasks} onToggleTask={toggleTask} onDeleteTask={deleteTask} /> { /* using visibleTasks for filtering! */}
       </main>
-
-
-      {/*<p>Replace this with your components.</p>
-      <TaskCounter tasks={tasks}/>
-      <TaskList task={tasks} onDeleteTask={deleteTask} />
-      <TaskForm onAddTask={addTask} />*/}
       </>
   )
 }

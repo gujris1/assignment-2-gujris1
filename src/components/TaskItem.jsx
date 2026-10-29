@@ -9,17 +9,12 @@ function TaskItem({ task, onToggle, onDelete }) {
         onChange={() => onToggle(task.id)}
       />
       <label>{task.text}</label>
-      <button type="button" className="delete-button" onClick={ () => onDelete(task.id)}>
+      <button type="button" className="delete-button" onClick={ () => onDelete(task.id)} title="Delete Task">
         ×
       </button>
 
     </li>
   );
 }
-/*
-      <button onClick={ () => onDelete(task.id)}>
-        Delete
-      </button>
-*/
 
 export default TaskItem;

@@ -1,15 +1,5 @@
 /* Paste your Assignment 1 styles.css here. Keep the icons in src/assets/ so url(assets/...) paths keep working. */
 /* Overall page styling */
-/*body {
-    color: black;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    display: flex;
-    min-height: 100vh;
-    flex-wrap: wrap;
-    align-content: flex-start;
-}*/
 body {
     color: black;
     margin: 0;
@@ -129,7 +119,7 @@ body {
 /* ========== MAIN CONTENT STYLES ========== */
 /* Main content section styling */
 .main-content {
-    min-width: 0; /* new testing issue when make screen smaller and main goes below sidebar*/
+    min-width: 0;
     min-height: 100vh;
     box-sizing: border-box;
     padding: 32px 48px;
@@ -172,27 +162,23 @@ body {
     cursor: pointer;
 }
 
-/* testing if checked works */
+/* checked box styling (checking a list item as completed) */
 .task input:checked {
-    background-color: #dc4c3e;/*#000;*/
-    /* completed task do gray strikethrough */
-    border-color: #dc4c3e;
+    background-color: #dc4c3e;
 }
 
 .task.completed {
-    /*text-decoration: line-through;*/
     color: #000;
 }
 
 .task label {
-    /* style the delete 'x' button */
     flex: 1;
-    cursor: pointer;
 }
 
 .task.completed label{
+    /* completed task do strikethrough */
     text-decoration: line-through;
-    color: #000;
+    color: #999999;
 }
 
 /* Add style for task form (input to add task) */
@@ -203,7 +189,7 @@ body {
 }
 
 .task-form input {
-    min-width: 0; /* new testing issue when make screen smaller and main goes below sidebar*/
+    min-width: 0;
     flex: 1;
     padding: 8px 12px;
     border-radius: 4px;
@@ -221,14 +207,13 @@ body {
     cursor: pointer;
 }
 
-/* Add style for delete button */
+.task-form button:hover {
+    background: #da2313;
+}
+
+/* Add style for delete button: to delete task */
+/* style the delete 'x' button */
 .delete-button {
-    /*border: 0;
-    background: none;
-    color: #9a9a9a;
-    font-size: 20px;
-    padding: 0 4px;
-    cursor: pointer;*/
     border: 0;
     background: none;
     color: #999999;
@@ -255,10 +240,11 @@ body {
 
 .filter-button {
     border: 0;
+    border-bottom: 2px solid transparent;
     background: none;
     padding: 4px;
     font: inherit;
-    color: #7e7d79;
+    color: #767575;
     cursor: pointer;
 }
 
@@ -269,8 +255,8 @@ body {
 .filter-button.active {
     color: #dc4c3e;
     font-weight: 600;
-    /* adding underline too */
-
+    /* adding underline too for currently active filter */
+    border-bottom: 2px solid #dc4c3e;
 }
 
 /* ========== RESPONSIVE STYLES ========== */

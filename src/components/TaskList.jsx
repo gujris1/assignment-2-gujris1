@@ -4,7 +4,7 @@ import TaskItem from './TaskItem';
 
 function TaskList({ tasks, onToggleTask, onDeleteTask }) {
   // check if there are no tasks to display and show a message if empty list
-  if (tasks.length == 0) {
+  if (tasks.length === 0) {
     return <p>No tasks to show.</p>;
   }
 
@@ -18,13 +18,3 @@ function TaskList({ tasks, onToggleTask, onDeleteTask }) {
 }
 
 export default TaskList;
-
-    /*<div>
-      <h1> Inbox </h1>
-      <ul class="task-list">
-        {tasks.map(task => (
-          <li key={task}>{task}</li>
-        ))}
-      </ul>
-      
-    </div>*/
