@@ -1,13 +1,13 @@
 import './App.css';
 import { useState } from 'react';
-import TaskList from './components/TaskList'
-import TaskForm from './components/TaskForm'
+import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
 import TaskCounter from './components/TaskCounter';
 //import all icons
 import calendarIcon from './assets/calendar_icon.png';
 import inboxIcon from './assets/inbox_icon.png';
 import menuIcon from './assets/menu_icon.png';
-import upcomingIcon from './assets/upcoming_icon.png'
+import upcomingIcon from './assets/upcoming_icon.png';
 
 
 // Assignment 2: build the Task Manager here.
@@ -16,7 +16,7 @@ const currentTasks = []; // initial state is no tasks
 const FILTERS = [
   { value: 'all', label: 'All' },
   { value: 'active', label: 'Active' },
-   { value: 'completed', label: 'Completed' },
+  { value: 'completed', label: 'Completed' },
 ];
 
 function App() {
